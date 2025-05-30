@@ -1,0 +1,69 @@
+=== LLM Architecture Design Automated Analysis ===
+
+1. Summary Statistics
+ gpu_count           task_type compression_method     n_params  predicted_loss  compressed_model_size_mb
+         1       summarization              fixed 1.862062e+08           0.046                   355.160
+         1       summarization            pruning 1.862062e+08           0.046                   497.224
+         1       summarization       quantization 1.862062e+08           0.046                   177.580
+         1 text_classification              fixed 1.932861e+08           0.045                   368.664
+         1 text_classification            pruning 1.932861e+08           0.045                   516.130
+         1 text_classification       quantization 1.932861e+08           0.045                   184.332
+         1     text_generation              fixed 1.932790e+08           0.045                   368.651
+         1     text_generation            pruning 1.932790e+08           0.045                   516.111
+         1     text_generation       quantization 1.932790e+08           0.045                   184.325
+         2       summarization              fixed 2.049562e+08           0.044                   390.923
+         2       summarization            pruning 2.049562e+08           0.044                   547.292
+         2       summarization       quantization 2.049562e+08           0.044                   195.461
+         2 text_classification              fixed 2.120361e+08           0.043                   404.427
+         2 text_classification            pruning 2.120361e+08           0.043                   566.197
+         2 text_classification       quantization 2.120361e+08           0.043                   202.213
+         2     text_generation              fixed 2.120290e+08           0.043                   404.413
+         2     text_generation            pruning 2.120290e+08           0.043                   566.179
+         2     text_generation       quantization 2.120290e+08           0.043                   202.207
+         4       summarization              fixed 2.799562e+08           0.038                   533.974
+         4       summarization            pruning 2.799562e+08           0.038                   747.564
+         4       summarization       quantization 2.799562e+08           0.038                   266.987
+         4 text_classification              fixed 2.870361e+08           0.037                   547.478
+         4 text_classification            pruning 2.870361e+08           0.037                   766.469
+         4 text_classification       quantization 2.870361e+08           0.037                   273.739
+         4     text_generation              fixed 2.870290e+08           0.037                   547.464
+         4     text_generation            pruning 2.870290e+08           0.037                   766.450
+         4     text_generation       quantization 2.870290e+08           0.037                   273.732
+         8       summarization              fixed 4.799562e+08           0.029                   915.444
+         8       summarization            pruning 4.799562e+08           0.029                  1281.621
+         8       summarization       quantization 4.799562e+08           0.029                   457.722
+         8 text_classification              fixed 4.870361e+08           0.029                   928.948
+         8 text_classification            pruning 4.870361e+08           0.029                  1300.527
+         8 text_classification       quantization 4.870361e+08           0.029                   464.474
+         8     text_generation              fixed 4.870290e+08           0.029                   928.934
+         8     text_generation            pruning 4.870290e+08           0.029                  1300.508
+         8     text_generation       quantization 4.870290e+08           0.029                   464.467
+
+2. Correlation Matrix (Numerical Columns)
+                          n_params  predicted_loss  compressed_model_size_mb  data_size  noise_level  complexity
+n_params                  1.000000       -0.665222                  0.698993   0.123115    -0.120026    0.123029
+predicted_loss           -0.665222        1.000000                 -0.464986   0.628141    -0.639865    0.643570
+compressed_model_size_mb  0.698993       -0.464986                  1.000000   0.086057    -0.083897    0.085996
+data_size                 0.123115        0.628141                  0.086057   1.000000    -0.944911    0.981981
+noise_level              -0.120026       -0.639865                 -0.083897  -0.944911     1.000000   -0.989743
+complexity                0.123029        0.643570                  0.085996   0.981981    -0.989743    1.000000
+
+3. Compression Method Impact on Predicted Loss
+compression_method
+fixed           0.0389
+pruning         0.0389
+quantization    0.0389
+
+4. GPU Count Impact on Model Size
+gpu_count
+1    352.02
+2    386.59
+4    524.87
+8    893.63
+
+5. Task Type Impact on Predicted Loss
+task_type
+summarization          0.0393
+text_classification    0.0387
+text_generation        0.0387
+

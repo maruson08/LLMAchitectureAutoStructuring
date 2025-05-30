@@ -1,1 +1,2 @@
-# LLMAchitectureAutoStructuring
+# LLMAAS
+## LLM Architecture Auto Structuring
